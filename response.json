@@ -1,0 +1,69 @@
+{
+  "message": "Query response",
+  "queryRuntime": 944,
+  "parseTime": 15,
+  "answers": [
+    {
+      "id": "2016-06-03T14:03:30.144-07:00",
+      "answerData": {
+        "rows": [
+          {
+            "values": [
+              "87822000000",
+              "2010"
+            ]
+          },
+          {
+            "values": [
+              "68566000000",
+              "2011"
+            ]
+          },
+          {
+            "values": [
+              "64674000000",
+              "2012"
+            ]
+          },
+          {
+            "values": [
+              "67454000000",
+              "2013"
+            ]
+          },
+          {
+            "values": [
+              "65522000000",
+              "2014"
+            ]
+          },
+          {
+            "values": [
+              "22117000000",
+              "2015"
+            ]
+          }
+        ],
+        "numOfRows": 6
+      },
+      "confidence": 1,
+      "type": "Data",
+      "fields": [
+        {
+          "name": "SUM_OFINANCIALMETRIC_METRIC_VALUE",
+          "type": "Float"
+        },
+        {
+          "name": "METRIC_YEAR",
+          "type": "Integer"
+        }
+      ]
+    }
+  ],
+  "sqlTranslatorTime": 8,
+  "backendQueries": [
+    "SELECT Sum(oFinancialMetric.metric_value) AS Sum_oFinancialMetric_metric_value , oFinancialMetric.metric_year AS oFinancialMetric_metric_year FROM FSSTestv241.FinancialMetric oFinancialMetric INNER JOIN FSSTestv241.Company oCompany ON oFinancialMetric.forCompany=oCompany.companyId WHERE oFinancialMetric.metric_year>='2010' AND oFinancialMetric.metric_year<='2015' AND oFinancialMetric.metric_kind='quarterly' AND oCompany.name IN ('BANK OF AMERICA OREGON, NATIONAL ASSOCIATION','BANK OF AMERICA RHODE ISLAND, NATIONAL ASSOCIATION','BANK OF AMERICA CORP','BANK OF AMERICA SINGAPORE LIMITED','BANK OF AMERICA CALIFORNIA, NATIONAL ASSOCIATION','BANK OF AMERICA NATIONAL ASSOCIATION','BANK OF AMERICA CALIFORNIA NATIONAL ASSOCIATION','Bank of America') AND oFinancialMetric.metric_name IN ('SalesRevenueNet','Revenues','Revenue','SalesRevenueServicesNet') GROUP BY oFinancialMetric.metric_year"
+  ],
+  "totalKGQueryTime": 968,
+  "KGQL": "SELECT SUM(oFinancialMetric.metric_value) , oFinancialMetric.metric_year FROM FinancialMetric oFinancialMetric , Company oCompany WHERE oFinancialMetric.metric_kind = 'quarterly' AND oFinancialMetric.metric_year >= '2010' AND oFinancialMetric.metric_year <= '2015' AND oCompany.name IN  ( 'BANK OF AMERICA OREGON, NATIONAL ASSOCIATION' , 'BANK OF AMERICA RHODE ISLAND, NATIONAL ASSOCIATION' , 'BANK OF AMERICA CORP' , 'BANK OF AMERICA SINGAPORE LIMITED' , 'BANK OF AMERICA CALIFORNIA, NATIONAL ASSOCIATION' , 'BANK OF AMERICA NATIONAL ASSOCIATION' , 'BANK OF AMERICA CALIFORNIA NATIONAL ASSOCIATION' , 'Bank of America' )  AND oFinancialMetric.metric_name IN  ( 'SalesRevenueNet' , 'Revenues' , 'Revenue' , 'SalesRevenueServicesNet' )  AND oFinancialMetric->forCompany = oCompany GROUP BY oFinancialMetric.metric_year"
+}

@@ -1,0 +1,203 @@
+<!doctype html>
+
+<!-- Define the ng-app parameter in the root element so AngularJS
+knows where to begin compiling. app1 is the module name and is referenced
+in the JS file we will create -->
+ 
+<!-- ng-init is a directive that initializes application data by assigning
+variable values -->
+<html ng-app="app1" ng-init="person = {fName: 'Derek', lName: 'Banas'};
+  capitals = [{city: 'Montgomery', state: 'Alabama'}, {city: 'Juneau', state: 'Alaska'}, {city: 'Phoenix', state: 'Arizona'}]">
+  <head>
+    <title>WCS for Financial</title>
+  </head>
+  <body>
+    
+      <h1 id="pageHeader">WCS Financial Query</h1>
+      
+      <style>
+        #field{
+            float:left;
+            width:400px;
+            height:27px;
+            text-indent:10px;
+            font-family:arial, sans-serif;
+            font-size:1em;
+            color:#333;
+            background: #fff;
+            border:solid 1px #d9d9d9;
+            border-top:solid 1px #c0c0c0;
+            border-right:none;
+      
+          }
+          #submit {
+            cursor:pointer;
+            width:70px;
+            height: 31px;
+            line-height:0;
+            font-size:1000;
+            color: white;
+            background: no-repeat #5596e6 center;
+            border: 1px solid #3079ED;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+          }
+          #pageHeader {
+              font-family: "HelveticaNeue-Bold", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+              font-weight: 300;
+          }
+      </style>
+ 
+    <!-- Adds a controller that the Angular module will control.
+    The view is the div element and all that it contains. The $scope
+    component is used to provide data to the view. -->
+    <div ng-controller="ctrl1">
+      
+ 
+      <!-- Define 2 elements that will be bound to the first and
+      second values in the scope using the ng-model directive. If
+      either value changes here it will change in the scope and
+      vice versa -->
+      <input id="field" name="field" type="text" ng-model="first" />
+    
+        
+      <!-- Bind a click on this button to the function updateValue
+      using ng-click -->
+      <button ng-click="updateValue()" input id="submit" name="submit" type="submit">Search</button>
+      <br><br>
+        
+      {{submitted}}
+ 
+      <!-- Expressions bind data to HTML as well -->
+      <p>Showing results for "{{first}}"</p>
+    
+        <!-- display bar chart of the data -->
+    <div>
+      <h2>Bar Chart</h2>
+      <section id ="chart"></section>
+      <div id = "chart"> </div>
+    </div>
+      
+    
+    <!-- display pie chart from pie.js -->
+    <div>
+      <h2>Pie Chart</h2>
+      <section id ="pie"></section>
+      <div id = "pie"> </div>
+    </div>
+        
+    <div id="datatable"></div>
+        
+        
+    <link rel="stylesheet" href="http://billmill.org/css/style.css" />
+<style>
+table {
+  border-collapse: collapse;
+}
+th {
+  border-bottom: 2px solid #ddd;
+  padding: 8px;
+  font-weight: bold;
+}
+td {
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+#chart {
+  padding: 0px;
+}
+.xaxislabel {
+  font-size: 9px;
+}
+</style>
+        
+        
+        
+        
+        
+        
+        
+    <!--
+    <div>
+        <h2>Data</h2>
+        <section id ="table"></section>
+        <div id = "table"> </div>
+    </div>
+    -->
+        
+    <!-- adds angular controller to div element that contains options to display graph -->
+    <div ng-controller="chartctrl">
+    
+        <input type="checkbox"
+            ng-model="string"
+            [name="string"]
+            [ng-true-value="expression"]
+            [ng-false-value="expression"]
+            [ng-change="string"]>
+      
+    </div>
+      
+    <!-- display bar chart of the data 
+    <div>
+      <h2>Bar Chart</h2>
+      <section id ="chart"></section>
+      <div id = "chart"> </div>
+    </div>-->
+      
+    
+    <!-- display pie chart from pie.js 
+    <div>
+      <h2>Pie Chart</h2>
+      <section id ="pie"></section>
+      <div id = "pie"> </div>
+    </div>-->
+      
+      
+      
+    <style>
+      .arc text{
+        font: 12px sans-serif;
+        text-anchor: middle;
+        }
+    
+        .arc path {
+            stroke: #fff;
+        }   
+        
+    </style>
+        
+    <title>Gantt Chart Example 1</title>
+<link type="text/css" href="http://mbostock.github.io/d3/style.css" rel="stylesheet" />
+<link type="text/css" href="example.css" rel="stylesheet" />
+<body>
+    <a id="JSONButton" href="vhttp://dk8996.github.io/Gantt-Chart/" target="_blank">Show raw JSON</a>
+</body>
+      
+ 
+    <!-- Load the AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script> 
+    
+        <!-- Load d3 script -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!-- Load jquery -->
+    <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+ 
+    <script type="text/javascript" src="gantt-chart-d3.js"></script>
+	<script type="text/javascript" src="gantt.js"></script>
+    
+     
+    
+      
+    <!-- specify graph scripts-->
+    <script src="script.js"></script>
+    <script src="pie1.js"></script>
+    <script src="table.js"></script>
+
+     <!-- Load the JS Module -->
+    <script src="app_form1.js"></script>
+    
+      
+    <!-- specify location of json file -->
+    <script type="text/javascript" src="response1.json"></script>
+  </body>
+  </html>

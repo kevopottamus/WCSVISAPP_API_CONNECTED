@@ -1,0 +1,117 @@
+{  
+   "question":{  
+      "annotatedQuestion":"\"<del>show</del> me <del>CitiBank</del> revenue\"",
+      "requestedAnswerCount":10,
+      "answers":[  
+         {  
+            "path":null,
+            "sqltext":"<!DOCTYPE html> \n <html> \n<body> \n<h2>Knowledge Graph Query (in JSON)</h2>  \n <br>{\"kgQuery\":[{\"select\":{\"display\":{\"displayArguments\":[{\"property\":\"metric_year\",\"label\":\"oFinancialMetric.metric_year\",\"type\":\"LONG\",\"object\":\"oFinancialMetric\"}]},\"aggregations\":[{\"aggType\":\"Sum\",\"aggArgument\":{\"property\":\"metric_value\",\"object\":\"oFinancialMetric\"},\"label\":\"SUM.oFinancialMetric.metric_value\",\"type\":\"DOUBLE\"}]},\"having\":{\"havingArguments\":[]},\"KGQL\":\"SELECT SUM(oFinancialMetric.metric_value) , oFinancialMetric.metric_year FROM FinancialMetric oFinancialMetric WHERE oFinancialMetric.metric_kind \\u003d \\u0027quarterly\\u0027 AND oFinancialMetric.metric_name IN  ( \\u0027SalesRevenueNet\\u0027 , \\u0027Revenues\\u0027 , \\u0027Revenue\\u0027 , \\u0027SalesRevenueServicesNet\\u0027 )  GROUP BY oFinancialMetric.metric_year \",\"orderBy\":{\"orderByArguments\":[]},\"from\":{\"fromArguments\":[{\"concept\":\"FinancialMetric\",\"object\":\"oFinancialMetric\"}]},\"where\":{\"binExpr2s\":[],\"binExpr1s\":[{\"literals\":[{\"type\":\"STRING\",\"value\":\"quarterly\"}],\"property\":\"metric_kind\",\"forAny\":false,\"binOp\":\"\\u003d\",\"object\":\"oFinancialMetric\"},{\"literals\":[{\"type\":\"STRING\",\"value\":\"SalesRevenueNet\"},{\"type\":\"STRING\",\"value\":\"Revenues\"},{\"type\":\"STRING\",\"value\":\"Revenue\"},{\"type\":\"STRING\",\"value\":\"SalesRevenueServicesNet\"}],\"property\":\"metric_name\",\"forAny\":true,\"binOp\":\"IN\",\"object\":\"oFinancialMetric\"}]},\"groupBy\":{\"groupByArguments\":[{\"property\":\"metric_year\",\"object\":\"oFinancialMetric\"}]}}]}  \n <br><br><h2>SQL Query</h2>  \n <br>SELECT Sum(oFinancialMetric.metric_value) AS Sum_oFinancialMetric_metric_value , oFinancialMetric.metric_year AS oFinancialMetric_metric_year FROM FSSTestv241.FinancialMetric oFinancialMetric WHERE oFinancialMetric.metric_kind='quarterly' AND oFinancialMetric.metric_name IN ('SalesRevenueNet','Revenues','Revenue','SalesRevenueServicesNet') GROUP BY oFinancialMetric.metric_year</body>  \n</html> \n",
+            "evidencetable":"",
+            "answertype":"SQL",
+            "confidence":100.0,
+            "SQLAnswer":[  
+               {  
+                  "backendQueries":[  
+                     "SELECT Sum(oFinancialMetric.metric_value) AS Sum_oFinancialMetric_metric_value , oFinancialMetric.metric_year AS oFinancialMetric_metric_year FROM FSSTestv241.FinancialMetric oFinancialMetric WHERE oFinancialMetric.metric_kind='quarterly' AND oFinancialMetric.metric_name IN ('SalesRevenueNet','Revenues','Revenue','SalesRevenueServicesNet') GROUP BY oFinancialMetric.metric_year"
+                  ],
+                  "KGQL":"SELECT SUM(oFinancialMetric.metric_value) , oFinancialMetric.metric_year FROM FinancialMetric oFinancialMetric WHERE oFinancialMetric.metric_kind = 'quarterly' AND oFinancialMetric.metric_name IN  ( 'SalesRevenueNet' , 'Revenues' , 'Revenue' , 'SalesRevenueServicesNet' )  GROUP BY oFinancialMetric.metric_year ",
+                  "totalKGQueryTime":289,
+                  "answers":[  
+                     {  
+                        "answerData":{  
+                           "rows":[  
+                              {  
+                                 "values":[  
+                                    "32600817000",
+                                    "2007"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "530204050000",
+                                    "2008"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "8124413312453.000",
+                                    "2009"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "11683091547130.1",
+                                    "2010"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "13810796232694.320",
+                                    "2011"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "14492841916134.47",
+                                    "2012"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "14749705273503",
+                                    "2013"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "15041672166743.0",
+                                    "2014"
+                                 ]
+                              },
+                              {  
+                                 "values":[  
+                                    "8398044339340",
+                                    "2015"
+                                 ]
+                              }
+                           ],
+                           "numOfRows":9
+                        },
+                        "confidence":1.0,
+                        "id":"2016-07-06T17:35:04.611-07:00",
+                        "type":"Data",
+                        "fields":[  
+                           {  
+                              "name":"SUM_OFINANCIALMETRIC_METRIC_VALUE",
+                              "type":"Float"
+                           },
+                           {  
+                              "name":"METRIC_YEAR",
+                              "type":"Integer"
+                           }
+                        ]
+                     }
+                  ],
+                  "sqlTranslatorTime":11,
+                  "queryRuntime":278,
+                  "message":"Query response",
+                  "parseTime":0
+               }
+            ],
+            "KGQuery":"http://acr044n02cmp.almaden.ibm.com:8092/kgquery/textQuery?editableparameters=&query=SELECT SUM%28oFinancialMetric.metric_value%29 , oFinancialMetric.metric_year FROM FinancialMetric oFinancialMetric WHERE oFinancialMetric.metric_kind _equals_ 'quarterly' AND oFinancialMetric.metric_name IN  %28 'SalesRevenueNet' , 'Revenues' , 'Revenue' , 'SalesRevenueServicesNet' %29  GROUP BY oFinancialMetric.metric_year ",
+            "id":"Dynamic Report",
+            "text":"(In Trillions)",
+            "TextAnswer":null,
+            "title":"Showing total financial metric value, with metric name revenue , grouped by year.",
+            "ProcessedTextAnswer":null
+         }
+      ],
+      "language":"en",
+      "id":"ca63f2f0-9954-417c-b7f3-431d51108dc8",
+      "text":"\"show me CitiBank revenue\"",
+      "time":"2016-07-06T17:35:03",
+      "type":"Data",
+      "overallConfidence":"Sure",
+      "status":"Succeeded"
+   }
+}
